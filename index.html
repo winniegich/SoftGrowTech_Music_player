@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <title>Music Player</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 <div id="bg"></div>
 <div class="player">
 
-<!-- LEFT: ALBUM COVER -->
+<!-- ALBUM COVER -->
 <div class="cover">
 <img id="cover-img" src="images/song1.jpg">
 </div>
 
-<!-- CENTER: SONG INFO -->
+<!-- SONG INFO -->
 <div class="info">
 <h1 id="title">Song Title</h1>
-<p id="artist">Artist Name</p>
+<p id="artist">Artist</p>
 <p class="album">Music Player</p>
 
-<!-- PROGRESS BAR -->
 <div class="progress-container">
 <span id="current">0:00</span>
 <input type="range" id="progress" value="0">
 <span id="duration">0:00</span>
 </div>
 
-<!-- CONTROLS -->
 <div class="controls">
 <button id="shuffle">🔀</button>
 <button id="prev">⏮</button>
@@ -36,14 +36,13 @@
 <button id="repeat">🔁</button>
 </div>
 
-<!-- VOLUME -->
 <div class="volume">
 🔊
 <input type="range" id="volume" min="0" max="1" step="0.01" value="0.7">
 </div>
 </div>
 
-<!-- RIGHT PLAYLIST -->
+<!-- PLAYLIST -->
 <div class="playlist" id="playlist"></div>
 <audio id="audio"></audio>
 </div>

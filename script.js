@@ -1,25 +1,15 @@
 const songs = [
 
-{
-title:"We Are Going To Be Ok",
-artist:"No Spirit",
-cover:"images/song1.jpg",
-src:"songs/song1.mp3"
-},
-
-{
-title:"Another Night",
-artist:"Jhove",
-cover:"images/song2.jpg",
-src:"songs/song2.mp3"
-},
-
-{
-title:"Sky Dreams",
-artist:"No Spirit",
-cover:"images/song3.jpg",
-src:"songs/song3.mp3"
-}
+{title:"Song 1", artist:"Artist 1", cover:"images/song1.jpg", src:"songs/song1.mp3"},
+{title:"Song 2", artist:"Artist 2", cover:"images/song2.jpg", src:"songs/song2.mp3"},
+{title:"Song 3", artist:"Artist 3", cover:"images/song3.jpg", src:"songs/song3.mp3"},
+{title:"Song 4", artist:"Artist 4", cover:"images/song4.jpg", src:"songs/song4.mp3"},
+{title:"Song 5", artist:"Artist 5", cover:"images/song5.jpg", src:"songs/song5.mp3"},
+{title:"Song 6", artist:"Artist 6", cover:"images/song6.jpg", src:"songs/song6.mp3"},
+{title:"Song 7", artist:"Artist 7", cover:"images/song7.jpg", src:"songs/song7.mp3"},
+{title:"Song 8", artist:"Artist 8", cover:"images/song8.jpg", src:"songs/song8.mp3"},
+{title:"Song 9", artist:"Artist 9", cover:"images/song9.jpg", src:"songs/song9.mp3"},
+{title:"Song 10", artist:"Artist 10", cover:"images/song10.jpg", src:"songs/song10.mp3"}
 ]
 
 const audio = document.getElementById("audio")
@@ -45,9 +35,10 @@ let playing = false
 let shuffle = false
 let repeat = false
 
-/* LOAD SONG */
 function loadSong(index){
+
 const song = songs[index]
+
 title.textContent = song.title
 artist.textContent = song.artist
 cover.src = song.cover
@@ -57,27 +48,24 @@ bg.style.backgroundImage = `url(${song.cover})`
 highlightSong()
 }
 
-/* PLAY */
 function playSong(){
 audio.play()
 playBtn.textContent="⏸"
 playing=true
 }
 
-/* PAUSE */
 function pauseSong(){
 audio.pause()
 playBtn.textContent="▶"
 playing=false
 }
 
-/* PLAY BUTTON */
 playBtn.onclick=()=>{
 playing ? pauseSong() : playSong()
 }
 
-/* NEXT */
 nextBtn.onclick=()=>{
+
 if(shuffle){
 currentSong = Math.floor(Math.random()*songs.length)
 }else{
@@ -89,17 +77,19 @@ loadSong(currentSong)
 playSong()
 }
 
-/* PREVIOUS */
 prevBtn.onclick=()=>{
 currentSong--
+
 if(currentSong < 0)
 currentSong=songs.length-1
+
 loadSong(currentSong)
 playSong()
 }
 
-/* PROGRESS BAR */
+/* PROGRESS */
 audio.addEventListener("timeupdate",()=>{
+
 progress.value = (audio.currentTime / audio.duration)*100 || 0
 })
 
@@ -130,6 +120,7 @@ if(repeat){
 playSong()
 return
 }
+
 nextBtn.click()
 })
 
@@ -139,6 +130,7 @@ if(e.code==="Space"){
 e.preventDefault()
 playing ? pauseSong() : playSong()
 }
+
 if(e.code==="ArrowRight") nextBtn.click()
 if(e.code==="ArrowLeft") prevBtn.click()
 })
@@ -147,12 +139,16 @@ if(e.code==="ArrowLeft") prevBtn.click()
 songs.forEach((song,index)=>{
 const div=document.createElement("div")
 div.classList.add("song")
+
 div.innerHTML=`<img src="${song.cover}">`
+
 div.onclick=()=>{
+
 currentSong=index
 loadSong(index)
 playSong()
 }
+
 playlist.appendChild(div)
 })
 
